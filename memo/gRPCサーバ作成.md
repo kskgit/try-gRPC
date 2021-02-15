@@ -3,8 +3,7 @@
 go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 - (公式)https://developers.google.com/protocol-buffers/docs/gotutorial
-
-https://qiita.com/marnie_ms4/items/4582a1a0db363fe246f3#protoc%E3%81%AB%E3%82%88%E3%82%8Bdocument%E7%94%9F%E6%88%90
+- https://qiita.com/marnie_ms4/items/4582a1a0db363fe246f3#protoc%E3%81%AB%E3%82%88%E3%82%8Bdocument%E7%94%9F%E6%88%90
 
 # option go_packageとは
 - 他ファイルがこのファイルを呼び出したいときに指定するパス（たぶん）
