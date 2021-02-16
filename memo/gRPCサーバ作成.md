@@ -27,3 +27,18 @@ https://developers.google.com/protocol-buffers/docs/reference/go-generated#packa
 >The import path is used to determine which import statements must be generated when one .proto file imports another .proto file
 - あるファイルが別のファイルを呼び出す際に使用する
 - https://developers.google.com/protocol-buffers/docs/reference/go-generated#package
+
+# protoc --go_out=plugins=grpc:chat chat.proto
+## これは何をやってるの？
+>This will install a protoc-gen-go binary in $GOBIN. Set the $GOBIN environment variable to change the installation location. It must be in your $PATH for the protocol buffer compiler to find it. The protocol buffer compiler produces Go output when invoked with the --go_out flag
+- `$GOBIN`にバイナリが保存される
+https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation
+
+## GOBINとは
+- 以下コマンドで確認可能
+```
+go env
+```
+
+### GOBINの設定方法
+
