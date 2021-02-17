@@ -1,3 +1,7 @@
+# 参考
+https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
+https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
+
 # コンパイル用のライブラリインストール
 ```
 go get -u github.com/golang/protobuf/protoc-gen-go
