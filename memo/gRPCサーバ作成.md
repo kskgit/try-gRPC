@@ -47,3 +47,4 @@ https://text.baldanders.info/golang/go-env/
 
 https://kk-river108.hatenablog.com/entry/2018/10/19/214826
 https://blog.ebiiim.com/posts/grpc-with-go-mod/
+https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation
