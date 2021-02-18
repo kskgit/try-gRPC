@@ -1,6 +1,6 @@
 # 参考
-https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
-https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
+- https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
+- https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
 
 # コンパイル用のライブラリインストール
 ```
@@ -34,9 +34,7 @@ https://developers.google.com/protocol-buffers/docs/reference/go-generated#packa
 
 # protoc --go_out=plugins=grpc:chat chat.proto
 ## これは何をやってるの？
->This will install a protoc-gen-go binary in $GOBIN. Set the $GOBIN environment variable to change the installation location. It must be in your $PATH for the protocol buffer compiler to find it. The protocol buffer compiler produces Go output when invoked with the --go_out flag
-- `$GOBIN`にバイナリが保存される
-https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation
+
 
 ## GOBINとは
 - 以下コマンドで確認可能
@@ -45,4 +43,7 @@ go env
 ```
 
 ### GOBINの設定方法
+https://text.baldanders.info/golang/go-env/
 
+https://kk-river108.hatenablog.com/entry/2018/10/19/214826
+https://blog.ebiiim.com/posts/grpc-with-go-mod/
