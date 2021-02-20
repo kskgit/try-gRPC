@@ -2,35 +2,95 @@
 - https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
 - https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
 
-# コンパイル用のライブラリインストール
+
+
+# 何がしたい？
+protoファイルからgoファイルを生成し呼び出す
+
+
+
+# protoファイルからgoファイルを生成するためのライブラリインストール
 ```
 go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 - (公式)https://developers.google.com/protocol-buffers/docs/gotutorial
 - https://qiita.com/marnie_ms4/items/4582a1a0db363fe246f3#protoc%E3%81%AB%E3%82%88%E3%82%8Bdocument%E7%94%9F%E6%88%90
-
 ### PATHを通す
 ```
 export PATH=$PATH:$GOPATH/bin
 ```
-- 使用前に上記のパスを通す必要がある
+- `proto-gen-go`を使用するためにパスを通す必要がある。上記を`zshrc`等に記載する
 
 
-# protoファイルを作成する
-## protoファイルにoption go_packageを指定する
+
+# protoファイルを定義する
+### option go_packageを指定する
 ```
 option go_package = "git@github.com/kskgit/try-gRPC/chat";
 ```
+- `option go_package` = 他ファイルがこのファイルを呼び出したいときに指定するパス（たぶん）
+https://developers.google.com/protocol-buffers/docs/reference/go-generated#package
+### 構造体を定義する
+```go
+message Message {
+  string body = 1;
+}
+```
+- `message` = リクエストメッセージ
+- https://developers.google.com/protocol-buffers/docs/overview#simple
+### メソッドを定義する
+```go
+service ChatService {
+  rpc SayHello(Message) returns (Message) {}
+}
+```
+- `service` = 定義した`message`を取得する際の処理を記載する
+- https://developers.google.com/protocol-buffers/docs/overview#services
+
+
+
+# protoファイル呼び出す処理を定義する
+```go
+import (
+	"fmt"
+	"log"
+	"net"
+
+	"github.com/kskgit/try-gRPC/chat"
+	"google.golang.org/grpc"
+)
+
+func main() {
+	fmt.Println("Go gRPC Beginners Tutorial!")
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
+	s := chat.Server{}
+
+	grpcServer := grpc.NewServer()
+
+	chat.RegisterChatServiceServer(grpcServer, &s)
+
+	if err := grpcServer.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
+```
+
+
+# protoファイルからgoファイルを生成する
+### コマンド実行
+```
+protoc --go_opt=module=github.com/kskgit/try-gRPC/chat --go_out=plugins=grpc:chat chat.proto
+```
 
 ### option go_packageとは
-- 他ファイルがこのファイルを呼び出したいときに指定するパス（たぶん）
-https://developers.google.com/protocol-buffers/docs/reference/go-generated#package
 
 
-### import pathとは
->The import path is used to determine which import statements must be generated when one .proto file imports another .proto file
-- あるファイルが別のファイルを呼び出す際に使用する
-- https://developers.google.com/protocol-buffers/docs/reference/go-generated#package
+
+
+# goファイルを生成する
 
 # protoc --go_out=plugins=grpc:chat chat.proto
 ## これは何をやってるの？
