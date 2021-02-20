@@ -1,15 +1,9 @@
-# 参考
-- https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
-- https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
-
-
-
 # 何がしたい？
 protoファイルからgoファイルを生成し呼び出す
 
 
 
-# protoファイルからgoファイルを生成するためのライブラリインストール
+# ①protoファイルからgoファイルを生成するためのライブラリインストール
 ```
 go get -u github.com/golang/protobuf/protoc-gen-go
 ```
@@ -32,7 +26,8 @@ go env
 https://text.baldanders.info/golang/go-env/
 
 
-# protoファイルを定義する
+
+# ②protoファイルを定義する
 ### option go_packageを指定する
 ```
 option go_package = "git@github.com/kskgit/try-gRPC/chat";
@@ -58,7 +53,7 @@ service ChatService {
 
 
 
-# protoファイル呼び出す処理を定義する
+# ③protoファイル呼び出す処理を定義する
 ```go
 import (
 	"fmt"
@@ -91,7 +86,7 @@ func main() {
 
 
 
-# protoファイルからgoファイルを生成する
+# ④protoファイルからgoファイルを生成する
 ### go mod initでパッケージ名を定義する
 - 現状だと上記の`"github.com/kskgit/try-gRPC/chat"`でパッケージを呼び出せないため、`go mod init PACKAGE_NAME`でパッケージを初期化しておく
 - https://qiita.com/uchiko/items/64fb3020dd64cf211d4e#1-go-mod-init-%E3%81%A7%E5%88%9D%E6%9C%9F%E5%8C%96%E3%81%99%E3%82%8B
@@ -99,6 +94,14 @@ func main() {
 ```
 protoc --go_opt=module=github.com/kskgit/try-gRPC/chat --go_out=plugins=grpc:chat chat.proto
 ```
+
+
+
+# 参考
+- https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
+- https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
+
+
 
 
 
