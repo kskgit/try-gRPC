@@ -48,3 +48,8 @@ https://text.baldanders.info/golang/go-env/
 https://kk-river108.hatenablog.com/entry/2018/10/19/214826
 https://blog.ebiiim.com/posts/grpc-with-go-mod/
 https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation
+
+### go mod init
+引数にモジュール名を指定する
+https://qiita.com/uchiko/items/64fb3020dd64cf211d4e#1-go-mod-init-%E3%81%A7%E5%88%9D%E6%9C%9F%E5%8C%96%E3%81%99%E3%82%8B
+
