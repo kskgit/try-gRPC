@@ -81,8 +81,11 @@ func main() {
 		log.Fatalf("failed to serve: %s", err)
 	}
 ```
+- `lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))` = クライアントからのリクエストを受け付けるポートを定義する
 - `RegisterChatServiceServer`
 - `grpcServer.Serve(lis)`
+- `grpc.NewServer()`
+- https://grpc.io/docs/languages/go/basics/#starting-the-server
 
 
 
