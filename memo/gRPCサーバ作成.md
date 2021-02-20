@@ -30,7 +30,7 @@ option go_package = "git@github.com/kskgit/try-gRPC/chat";
 ```
 - `option go_package` = 他ファイルがこのファイルを呼び出したいときに指定するパス（たぶん）
 https://developers.google.com/protocol-buffers/docs/reference/go-generated#package
-### 構造体を定義する
+### messageを定義する
 ```go
 message Message {
   string body = 1;
@@ -38,7 +38,7 @@ message Message {
 ```
 - `message` = リクエストメッセージ
 - https://developers.google.com/protocol-buffers/docs/overview#simple
-### メソッドを定義する
+### serviceを定義する
 ```go
 service ChatService {
   rpc SayHello(Message) returns (Message) {}
