@@ -21,6 +21,15 @@ export PATH=$PATH:$GOPATH/bin
 ```
 - `proto-gen-go`を使用するためにパスを通す必要がある。上記を`zshrc`等に記載する
 
+### GOBINとは
+- ※話の流れとは関係無いが調べたためメモ
+- 以下コマンドで確認可能
+```
+go env
+```
+
+###### GOBINの設定方法
+https://text.baldanders.info/golang/go-env/
 
 
 # protoファイルを定義する
@@ -77,39 +86,29 @@ func main() {
 		log.Fatalf("failed to serve: %s", err)
 	}
 ```
+- `RegisterChatServiceServer`
+- `grpcServer.Serve(lis)`
+
 
 
 # protoファイルからgoファイルを生成する
+### go mod initでパッケージ名を定義する
+- 現状だと上記の`"github.com/kskgit/try-gRPC/chat"`でパッケージを呼び出せないため、`go mod init PACKAGE_NAME`でパッケージを初期化しておく
+- https://qiita.com/uchiko/items/64fb3020dd64cf211d4e#1-go-mod-init-%E3%81%A7%E5%88%9D%E6%9C%9F%E5%8C%96%E3%81%99%E3%82%8B
 ### コマンド実行
 ```
 protoc --go_opt=module=github.com/kskgit/try-gRPC/chat --go_out=plugins=grpc:chat chat.proto
 ```
 
-### option go_packageとは
 
 
 
 
-# goファイルを生成する
 
-# protoc --go_out=plugins=grpc:chat chat.proto
-## これは何をやってるの？
-
-
-## GOBINとは
-- 以下コマンドで確認可能
-```
-go env
-```
-
-### GOBINの設定方法
-https://text.baldanders.info/golang/go-env/
 
 https://kk-river108.hatenablog.com/entry/2018/10/19/214826
 https://blog.ebiiim.com/posts/grpc-with-go-mod/
 https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation
 
-### go mod init
-引数にモジュール名を指定する
-https://qiita.com/uchiko/items/64fb3020dd64cf211d4e#1-go-mod-init-%E3%81%A7%E5%88%9D%E6%9C%9F%E5%8C%96%E3%81%99%E3%82%8B
+
 
