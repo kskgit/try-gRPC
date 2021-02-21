@@ -3,9 +3,11 @@ protoファイルからgoファイルを生成し呼び出す
 
 
 
-# ①protoファイルからgoファイルを生成するためのライブラリインストール
+# ①事前準備
+### ライブラリインストール
 ```
-go get -u github.com/golang/protobuf/protoc-gen-go
+go get google.golang.org/protobuf/cmd/protoc-gen-go \
+         google.golang.org/grpc/cmd/protoc-gen-go-grpc
 ```
 - (公式)https://developers.google.com/protocol-buffers/docs/gotutorial
 - https://qiita.com/marnie_ms4/items/4582a1a0db363fe246f3#protoc%E3%81%AB%E3%82%88%E3%82%8Bdocument%E7%94%9F%E6%88%90
@@ -14,6 +16,12 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 export PATH=$PATH:$GOPATH/bin
 ```
 - `proto-gen-go`を使用するためにパスを通す必要がある。上記を`zshrc`等に記載する
+
+### go envの設定
+```
+export GO111MODULE=on
+```
+- 普通にこれ実行するだけだと毎回リセットされるため`zshrc`等に書き込んでおく
 
 ### GOBINとは
 - ※話の流れとは関係無いが調べたためメモ
@@ -103,6 +111,7 @@ protoc --go_opt=module=github.com/kskgit/try-gRPC/chat --go_out=plugins=grpc:cha
 # 参考
 - https://www.youtube.com/watch?v=BdzYdN_Zd9Q&list=WL&index=2
 - https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
+- https://grpc.io/docs/languages/go/basics/
 
 
 
