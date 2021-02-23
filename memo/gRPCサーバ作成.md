@@ -82,6 +82,9 @@ service RouteGuide {
 - `return`・メソッド引数の頭に`stream`を付けることで、双方向ストリーミング通信を行う
 - 全てのリクエストを待ってレスポンスを返すことも、一つのリクエストに毎回レスポンスを返すことも出来る
 
+### 公式
+https://grpc.io/docs/languages/go/basics/#defining-the-service
+
 # ③クライアントとサーバーのコードを生成する
 ```
 $ protoc --go_out=. --go_opt=paths=source_relative \
@@ -106,6 +109,10 @@ $ protoc --go_out=. --go_opt=paths=source_relative \
 - `--go-grpc_opt=paths=source_relative`
 	- `--go_opt=paths=source_relative`の`go-grpc_out`用
 
+### 公式
+https://grpc.io/docs/languages/go/basics/#generating-client-and-server-code
+
+# ④サーバー作成
 
 
 # 参考
@@ -115,6 +122,8 @@ $ protoc --go_out=. --go_opt=paths=source_relative \
 
 
 
+# 調べたこと
+### ポインタ型変数とは
 
 
 
