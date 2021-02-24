@@ -150,8 +150,8 @@ grpcServer := grpc.NewServer(opts...)
 // protoから生成されたコードによって
 // https://pkg.go.dev/google.golang.org/grpc#Server.RegisterService
 pb.RegisterRouteGuideServer(grpcServer, newServer())
+
+// listenerを指定してサーバをスタートする
+// https://pkg.go.dev/google.golang.org/grpc#Server.Serve
 grpcServer.Serve(lis)
 ```
-- 
-
-
