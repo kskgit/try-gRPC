@@ -139,12 +139,16 @@ if *tls {
 	}
 	opts = []grpc.ServerOption{grpc.Creds(creds)}
 }
+
+// NewServerでサービスやリクエストを受け付ける前の状態のサーバを生成する
+// https://pkg.go.dev/google.golang.org/grpc#NewServer
 // ...でスライスを展開している
 // https://qiita.com/hnakamur/items/c3560a4b780487ef6065
 grpcServer := grpc.NewServer(opts...)
-
-// s
-grpcServer := grpc.NewServer(opts...)
+// gRPC serverへサービスとその実装を登録する
+// 必ずServe実行前に行う必要がある
+// protoから生成されたコードによって
+// https://pkg.go.dev/google.golang.org/grpc#Server.RegisterService
 pb.RegisterRouteGuideServer(grpcServer, newServer())
 grpcServer.Serve(lis)
 ```
