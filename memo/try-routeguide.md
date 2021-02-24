@@ -145,6 +145,7 @@ if *tls {
 // ...でスライスを展開している
 // https://qiita.com/hnakamur/items/c3560a4b780487ef6065
 grpcServer := grpc.NewServer(opts...)
+
 // gRPC serverへサービスとその実装を登録する
 // 必ずServe実行前に行う必要がある
 // protoから生成されたコードによって
