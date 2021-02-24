@@ -123,7 +123,16 @@ https://grpc.io/docs/languages/go/basics/#generating-client-and-server-code
 
 
 # 調べたこと
+### 先頭に米印が付いているこの書き方は何？
+```go
+*certFile = data.Path("x509/server_cert.pem")
+```
+- `*変数名`= ポインタが表す値を取得
+- `&変数名`= ポインタの値を取得
 ### ポインタ型変数とは
+>ポインタ型で宣言された変数はメモリ上のアドレスを値として受け入れる事が出来る
+https://qiita.com/k-penguin-sato/items/62dfe0f93f56e4bf9157#%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF%E5%9E%8B%E5%A4%89%E6%95%B0%E3%81%A8%E3%81%AF
+
 
 
 
